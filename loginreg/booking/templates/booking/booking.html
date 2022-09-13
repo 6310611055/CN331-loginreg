@@ -6,5 +6,14 @@
     <li>course_number: {{ bookings.course_number }}</li>
 </ul>
 
+
+<h2>Student</h2>
+<ul>
+    {% for students in student%}
+    <li> {{ students}} </li>
+    {% empty %}
+    <li> No student. </li>
+    {% endfor %}
+</ul>
 <a href="{% url 'index' %}">Back to Booking List</a>
 {% endblock %}

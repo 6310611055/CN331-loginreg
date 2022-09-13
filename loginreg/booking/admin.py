@@ -8,7 +8,7 @@ class BookingAdmin(admin.ModelAdmin):
 
 
 class SubjectAdmin(admin.ModelAdmin):
-   pass
+    pass
 
 class StudentAdmin(admin.ModelAdmin):
     pass

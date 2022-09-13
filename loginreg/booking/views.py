@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from .models import Booking, Subject
+from .models import Booking, Student, Subject
 # Create your views here.
 
 def index(request):
@@ -12,10 +12,13 @@ def index(request):
     })
 
 def bookings(request, bookings_user):
-    bookings = Booking.objects.filter(pk = bookings_user)
+    bookings = Booking.objects.get(pk = bookings_user)
     return render(request,'booking/booking.html', {
-        'bookings': bookings
+        'bookings': bookings,
+        'student' : bookings.student.all(),
     })
+
+    
     
 
 
