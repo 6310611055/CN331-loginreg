@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Booking, Student, Subject
+from .models import Booking, Subject
 
 # Register your models here.
 class BookingAdmin(admin.ModelAdmin):
@@ -15,4 +15,3 @@ class StudentAdmin(admin.ModelAdmin):
 
 admin.site.register(Booking, BookingAdmin)
 admin.site.register(Subject, SubjectAdmin)
-admin.site.register(Student, StudentAdmin)

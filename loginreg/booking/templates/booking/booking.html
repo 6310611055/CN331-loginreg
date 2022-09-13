@@ -9,11 +9,15 @@
 
 <h2>Student</h2>
 <ul>
-    {% for students in student%}
-    <li> {{ students}} </li>
+    {% for student in students %}
+    <li> {{ student.first_name}} </li>
+    <li> {{ student.last_name}} </li>
+    <li> {{ student.username}} </li>
     {% empty %}
     <li> No student. </li>
     {% endfor %}
 </ul>
+
+
 <a href="{% url 'index' %}">Back to Booking List</a>
 {% endblock %}
