@@ -11,7 +11,16 @@ def index(request):
         'booking': booking
     })
 
-def index(request):
-    return render(request, "subject/index.html",{
-        'subject': Subject.objects.all()
+def bookings(request, bookings_user):
+    bookings = Booking.objects.filter(pk = bookings_user)
+    return render(request,'booking/booking.html', {
+        'bookings': bookings
     })
+    
+
+
+#def index(request):
+#   return render(request, "subject/index.html",{
+#       'subject': Subject.objects.all()
+#   })
+

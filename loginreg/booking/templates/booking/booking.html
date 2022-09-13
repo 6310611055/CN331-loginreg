@@ -1,0 +1,10 @@
+{% extends 'booking/layout.html' %}
+{% block body %}
+<h1>Booking: {{ bookings.user }}</h1>
+<ul>
+    <li>user: {{ bookings.user }}</li>
+    <li>course_number: {{ bookings.course_number }}</li>
+</ul>
+
+<a href="{% url 'index' %}">Back to Booking List</a>
+{% endblock %}

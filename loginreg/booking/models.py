@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+# from loginreg import booking
+
 # Create your models here.
 class Subject(models.Model):
     class_number = models.CharField(max_length=5, default="")
@@ -17,3 +19,11 @@ class Booking(models.Model):
     
     def __str__(self):
         return f"{self.user} {self.course_number}"
+
+class Student(models.Model):
+    first = models.CharField(max_length=64)
+    last = models.CharField(max_length=64)
+    booking = models.ManyToManyField(Booking, blank=True, default="")
+
+    def __str__(self):
+        return f"{ self.first } { self.last }"

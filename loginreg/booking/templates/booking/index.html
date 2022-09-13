@@ -1,12 +1,13 @@
 {% extends 'booking/layout.html' %}
 {% block body %}
 
-<h1>booking</h1>
+<h1>Booking List</h1>
 <ul>
     {% for bookings in booking %}
-    <li>{{bookings}}</li>
+    <li>
+        {{ bookings }}</li>
     {% empty %}
-    <li> No bookings. </li>
+    <li> No booking. </li>
     {% endfor %}
 
 </ul>
