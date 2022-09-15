@@ -8,10 +8,8 @@ class BookingAdmin(admin.ModelAdmin):
 
 
 class SubjectAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("class_number", "subject_name", "section", "semester", "year", "seats")
 
-class StudentAdmin(admin.ModelAdmin):
-    pass
 
 admin.site.register(Booking, BookingAdmin)
 admin.site.register(Subject, SubjectAdmin)

@@ -2,19 +2,33 @@
 {% block body %}
 
 <h1>Subject List</h1>
-<ul>
-    {% for subject in subject %}
-    <li>{{ subject }}</li>
-    <form action="{% url 'booking' subject.id %}" method="post" >
-        {% csrf_token %}
-        <button type="submit">enroll</button>
-    </form>
-    <br></br>
-    {% empty %}
-    <li> No booking. </li>
+{% if subjects %}
+<table>
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Section</th>
+      <th>Semester</th>
+      <th>Year</th>
+      <th>Available Seat</th>
+      <th>button</th>      
+    </tr>
+    {% for subject in subjects %}
+    <tr>
+        <td>{{ subject.class_number }}</td>
+        <td>{{ subject.subject_name }}</td>
+        <td>{{ subject.section }}</td>
+        <td>{{ subject.semester }}</td>
+        <td>{{ subject.year }}</td>
+        <td>{{ subject.seats }}</td>
+        <td>
+            <form action="{% url 'booking:booking' subject.id %}" method="post" >
+                {% csrf_token %}
+                <button type="submit">enroll</button>
+            </form>
+        </td>
+    </tr>
     {% endfor %}
-
-</ul>
-
-
+</table>
+{% endif %}
 {% endblock %}

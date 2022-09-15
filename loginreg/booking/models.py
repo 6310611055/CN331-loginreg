@@ -8,9 +8,12 @@ class Subject(models.Model):
     class_number = models.CharField(max_length=5, default="")
     subject_name = models.CharField(max_length=64, default="")
     section = models.CharField(max_length=10, default="")
+    semester = models.CharField(max_length=10, default="")
+    year = models.CharField(max_length=10, default="")
+    seats = models.CharField(max_length=10, default="")
      
     def __str__(self):
-        return f"{self.class_number} {self.subject_name} {self.section}"
+        return f"{self.class_number} {self.subject_name} {self.section} {self.semester} {self.year} {self.seats}"
 
 
 class Booking(models.Model):
