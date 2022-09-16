@@ -10,7 +10,8 @@
       <th>Section</th>
       <th>Semester</th>
       <th>Year</th>
-      <th>button</th>      
+      <th>Available Seat</th>
+      <th></th>      
     </tr>
     {% for subject in subjects %}
     <tr>
@@ -19,6 +20,7 @@
         <td>{{ subject.course_number.section }}</td>
         <td>{{ subject.course_number.semester }}</td>
         <td>{{ subject.course_number.year }}</td>
+        <td>{{ subject.course_number.seats }}</td>
         <td>
             <form action="{% url 'booking:booking' subject.id %}" method="post" >
                 {% csrf_token %}

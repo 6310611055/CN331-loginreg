@@ -1,6 +1,7 @@
 {% extends 'booking/layout.html' %}
 {% block body %}
 
+
 <h1>Subject List</h1>
 {% if subjects %}
 <table>
@@ -11,7 +12,7 @@
       <th>Semester</th>
       <th>Year</th>
       <th>Available Seat</th>
-      <th>button</th>      
+      <th></th>      
     </tr>
     {% for subject in subjects %}
     <tr>
@@ -32,5 +33,5 @@
 </table>
 {% endif %}
 <a href="{% url 'booking:checksubreg' %}">Check Registered Courese</a>
-<a href="{% url 'index' %}">Back to Profile</a>
+<a href="{% url 'index' %}">Back to Home</a>
 {% endblock %}
