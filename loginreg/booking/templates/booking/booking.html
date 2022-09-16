@@ -3,13 +3,19 @@
 <h2>Registered Courses</h2>
 <ul>
     {% for subject in subjects %}
-    <li> {{ subject }} </li>
+    <li> {{ subject.course_number }} 
+        
+        <form action="{% url 'booking:booking' subject.id %}" method="post" >
+        {% csrf_token %}
+        <button type="submit">withdraw</button>
+    </li>
     <!--<li> {{ student.first_name}} </li>
     <li> {{ student.last_name}} </li>
     <li> {{ student.username}} </li>-->
     {% empty %}
     <li> No registered courese. </li>
     {% endfor %}
+
 </ul>
 
 

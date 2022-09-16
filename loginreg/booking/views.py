@@ -36,7 +36,14 @@ def bookings(request, subject_id):
         booking = Booking.objects.create(user=user, course_number=subject)
 
         subjects = Booking.objects.filter(user=user)
-        print(subject)
         return render(request,'booking/booking.html', {
             'subjects': subjects,
         })
+
+def checksubreg(request):
+    user = User.objects.get(pk=request.user.id)
+    enrolled_subjects = Booking.objects.filter(user=user)
+
+    return render(request,'booking/booking.html', {
+        'subjects': enrolled_subjects,
+    })

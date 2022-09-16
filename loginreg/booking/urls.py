@@ -5,6 +5,7 @@ app_name = 'booking'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('<int:subject_id>/booking', views.bookings, name='booking'),
+    path('booking/<int:subject_id>', views.bookings, name='booking'),
+    path('checksubreg/', views.checksubreg, name= 'checksubreg'),
 
 ]
