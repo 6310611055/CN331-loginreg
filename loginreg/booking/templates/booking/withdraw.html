@@ -1,6 +1,45 @@
 {% extends 'booking/layout.html' %}
 {% block body %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    body {
+        font-family: Calibri, Helvetica, sans-serif;
+    }
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+        
+    }
 
+    th {
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+        text-align: center;
+        padding: 22px;
+
+    }
+
+    td {
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+        text-align: center;
+        text-align: center;
+        padding: 16px;
+
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+</head>
+
+<body>
 <h1>Subject List</h1>
 {% if subjects %}
 <table>
@@ -31,5 +70,6 @@
     {% endfor %}
 </table>
 {% endif %}
+</body>
 <a href="{% url 'booking:checksubreg' %}">Check Registered Courese</a>
 {% endblock %}
