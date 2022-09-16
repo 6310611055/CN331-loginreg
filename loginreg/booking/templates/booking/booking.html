@@ -5,9 +5,10 @@
     {% for subject in subjects %}
     <li> {{ subject.course_number }} 
         
-        <form action="{% url 'booking:booking' subject.id %}" method="post" >
-        {% csrf_token %}
-        <button type="submit">withdraw</button>
+        <form action="{% url 'booking:withdraw' subject.course_number.id %}" method="post" >
+            {% csrf_token %}
+            <button type="submit">withdraw</button>
+        </form>
     </li>
     <!--<li> {{ student.first_name}} </li>
     <li> {{ student.last_name}} </li>

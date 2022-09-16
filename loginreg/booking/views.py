@@ -47,3 +47,17 @@ def checksubreg(request):
     return render(request,'booking/booking.html', {
         'subjects': enrolled_subjects,
     })
+
+def withdraw(request, subject_id):
+    user = User.objects.get(pk=request.user.id)
+    subject = Subject.objects.get(id=subject_id)
+
+    check = Booking.objects.filter(user=user, course_number=subject).first()
+
+    if check is not None:
+        # withdraw = Booking.objects.delete(user=user, course_number=subject)
+        check.delete()
+
+        subjects = Booking.objects.filter(user=user).all()
+        print(subjects)
+        return HttpResponseRedirect(reverse('booking:index')) 
