@@ -1,9 +1,59 @@
 {% extends 'users/layout.html' %}
 {% block body %}
+<!DOCTYPE html> 
+<html> 
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    Body{
+        font-family: Calibri, Helvetica, sans-serif;
+        background-color: #ECAE7D ;
+     }
+    button { 
+        background-color: #E9311A; 
+        width: 100%;
+        color: white; 
+        padding: 15px; 
+        margin: 10px 0px; 
+        border: none; 
+        cursor: pointer; 
+          } 
+    form { 
+        border: 3px solid #f1f1f1; 
+     }  
+     input[type=text], input[type=password] { 
+        width: 100%; 
+        margin: 8px 0;
+        padding: 12px 20px; 
+        display: inline-block; 
+        border: 2px solid green; 
+        box-sizing: border-box; 
+    }
+    button:hover { 
+        opacity: 0.7; 
+    } 
+    .container { 
+        padding: 25px; 
+        background-color: #8DB4AD;
+    } 
+</style>
+</head>
+<body>
+    <center> <h1>Login</h1> </center>
+    {% if message %}
+        <div style="color:red">{{ message }}</div>
+    {% endif %}
 
-<h1>login</h1>
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <div class="container">
+            <label>Username : </label>
+            <input type="text" name="username" placeholder="Enter Username">
+            <label>Password : </label>
+            <input type="password" name="password" placeholder="Enter Password">
+            <button type="submit">Login</button> 
 
-{% if message %}
+<!--{% if message %}
     <div style="color:red">{{ message }}</div>
 {% endif %}
 
@@ -11,10 +61,10 @@
     {% csrf_token %}
     <input type="text" name="username" placeholder="Username">
     <input type="password" name="password" placeholder="Password">
-    <input type="submit" value="Login"> 
-
+    <input type="submit" value="Login"> -->
+        </div>
+    </form>
+</body>
+</html>
 </form>
-
-
-
 {% endblock %}

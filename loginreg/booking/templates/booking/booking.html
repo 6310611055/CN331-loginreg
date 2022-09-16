@@ -9,7 +9,6 @@
         <th>Section</th>
         <th>Semester</th>
         <th>Year</th>
-        <th>Available Seat</th>
         <th>button</th>      
     </tr>
     {% for subject in subjects %}
@@ -19,7 +18,6 @@
         <td>{{ subject.course_number.section }}</td>
         <td>{{ subject.course_number.semester }}</td>
         <td>{{ subject.course_number.year }}</td>
-        <td>{{ subject.course_number.seats }}</td>
         <td>
             <form action="{% url 'booking:withdraw' subject.course_number.id %}" method="post" >
                 {% csrf_token %}
