@@ -9,7 +9,7 @@
         font-family: Calibri, Helvetica, sans-serif;
         background-color: #d4c3ac;
     }
-    button { 
+    button {
         background-color: #14120b; 
         width: 100%;
         color: white; 
@@ -18,8 +18,11 @@
         border: none; 
         cursor: pointer; 
           } 
-    form { 
-        border: 3px solid white; 
+    form {
+        margin: auto;
+        width: 50%;   
+        border: 3px solid white;
+
     }  
     
     input[type=text], input[type=password] { 
@@ -43,15 +46,16 @@
     h1{
         font-size: 50px;
     }
+    .center {
+        text-align: center;
+        font-size: 25px;
+
+    }
 
 </style>
 </head>
 <body>
     <center> <h1>Login</h1> </center>
-    {% if message %}
-        <div style="color:red" >{{ message }}</div>
-    {% endif %}
-
     <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
         <div class="container">
@@ -63,6 +67,9 @@
 
         </div>
     </form>
+    {% if message %}
+        <div class="center" style="color:red" >{{ message }}</div>
+    {% endif %}
 </body>
 </html>
 </form>
