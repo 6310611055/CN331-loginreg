@@ -1,50 +1,123 @@
 {% extends 'booking/layout.html' %}
 {% block body %}
-<h1>Registered Courses</h1>
-{% if subjects %}
-<table>
-    <tr>
-        <th>Code</th>
-        <th>Name</th>
-        <th>Section</th>
-        <th>Semester</th>
-        <th>Year</th>
-        <th></th>      
-    </tr>
-    {% for subject in subjects %}
-    <tr>
-        <td>{{ subject.course_number.class_number }}</td>
-        <td>{{ subject.course_number.subject_name }}</td>
-        <td>{{ subject.course_number.section }}</td>
-        <td>{{ subject.course_number.semester }}</td>
-        <td>{{ subject.course_number.year }}</td>
-        <td>
-            <form action="{% url 'booking:withdraw' subject.course_number.id %}" method="post" >
-                {% csrf_token %}
-                <button type="submit">withdraw</button>
-            </form>
-        </td>
-    </tr>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    body {
+        margin: 0;
+        font-family: Calibri, Helvetica, sans-serif;
+    }
+
     
+    .topnav {
+        overflow: hidden;
+        background-color: #fe7a66;
+    }
+      
+    .topnav a {
+        float: left;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 20px;
+    }
+       
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    
+    .topnav a.active {
+        background-color: #038db2;
+        color: white;
+    }
 
-    <!--<li> {{ subject.course_number }} 
+
+    h1{
+        font-size: 45px;
+    }
+
+    
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
         
-        <form action="{% url 'booking:withdraw' subject.course_number.id %}" method="post" >
-            {% csrf_token %}
-            <button type="submit">withdraw</button>
-        </form>
-    </li>-->
-    <!--<li> {{ student.first_name}} </li>
-    <li> {{ student.last_name}} </li>
-    <li> {{ student.username}} </li>-->
-    {% empty %}
-    <li> No registered courese. </li>
-    {% endfor %}
-</table>
-{% endif %}
+    }
+    th {
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+        text-align: center;
+        padding: 22px;
+        background-color: #d2736c;
+        color: white;
+        font-size: 20px;
 
+    }
 
+    td {
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+        text-align: center;
+        padding: 16px;
+        font-size: 18px;
 
-<a href="{% url 'booking:index' %}">Back to Booking List</a>
-<a href="{% url 'index' %}">Back to Profile</a>
+    }
+
+    tr:nth-child(even) {
+        background-color: #e3eae1;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #fbc7bc;
+    }
+
+</style>
+</head>
+
+<body> 
+    <div class="topnav">
+        <a class="active" href="{% url 'index' %}">Home</a>
+        <a href="{% url 'booking:index' %}">Back to Booking List</a>
+    </div>
+    <br>
+    
+    <div class= style="padding-left:16px">
+        <center><h1>Registered Courses</h1></center>
+        {% if subjects %}
+        <table>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Section</th>
+                <th>Semester</th>
+                <th>Year</th>
+                <th></th>      
+            </tr>
+            {% for subject in subjects %}
+            <tr>
+                <td>{{ subject.course_number.class_number }}</td>
+                <td>{{ subject.course_number.subject_name }}</td>
+                <td>{{ subject.course_number.section }}</td>
+                <td>{{ subject.course_number.semester }}</td>
+                <td>{{ subject.course_number.year }}</td>
+                <td>
+                    <form action="{% url 'booking:withdraw' subject.course_number.id %}" method="post" >
+                        {% csrf_token %}
+                        <button type="submit">withdraw</button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+                <p> No registered courese. </p>
+            {% endfor %}
+        </table>
+    {% endif %}
+    </div>
+</body>
+</html>
 {% endblock %}

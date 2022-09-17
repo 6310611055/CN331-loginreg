@@ -13,31 +13,31 @@
     
     .topnav {
         overflow: hidden;
-        background-color: #8db4ad;
+        background-color: #fe7a66;
     }
       
     .topnav a {
         float: left;
-        color: black;
+        color: white;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
-        font-size: 17px;
+        font-size: 20px;
     }
        
     .topnav a:hover {
         background-color: #ddd;
         color: black;
-      }
-      
-      
-    ul{
-        list-style-type: circle;
-        font-size: 20px;
-      }
+    }
 
+    .topnav a.active {
+        background-color: #038db2;
+        color: white;
+    }
+      
+    
     h1{
-        font-size: 30px;
+        font-size: 45px;
     }
 
     
@@ -56,6 +56,7 @@
         padding: 22px;
         background-color: #d2736c;
         color: white;
+        font-size: 20px;
 
     }
 
@@ -63,8 +64,8 @@
         border: 1px solid #ddd;
         border-collapse: collapse;
         text-align: center;
-        text-align: center;
         padding: 16px;
+        font-size: 18px;
 
     }
 
@@ -76,12 +77,52 @@
         background-color: #fbc7bc;
     }
 
+    .button {
+        display: inline-block;
+        border-radius: 8px;
+        background-color: #f4511e;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 16px;
+        padding: 10px;
+        width: 100px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 1px;
+    }
+      
+    .button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+      
+    .button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+      
+    .button:hover span {
+        padding-right: 25px;
+    }
+      
+    .button:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+
 </style>
 </head>
 
 <body>
     <div class="topnav">
-        <a href="{% url 'booking:checksubreg' %}">Check Registered Courese</a>
+        <a href="{% url 'booking:checksubreg' %}">Registered Courese</a>
     </div>
     <br>
 
@@ -109,7 +150,7 @@
                 <td>
                     <form action="{% url 'booking:booking' subject.id %}" method="post" >
                         {% csrf_token %}
-                        <button type="submit">enroll</button>
+                        <button class="button" style="vertical-align:middle" type="submit"><span>enroll</span></button>
                     </form>
                 </td>
             </tr>
