@@ -21,6 +21,7 @@
     form { 
         border: 3px solid #f1f1f1; 
      }  
+    
      input[type=text], input[type=password] { 
         width: 100%; 
         margin: 8px 0;
@@ -33,15 +34,21 @@
         opacity: 0.7; 
     } 
     .container { 
+        font-size: 22px;
         padding: 25px; 
-        background-color: #8DB4AD;
+        background-color: #1b3cca;
     } 
+
+    h1{
+        font-size: 50px;
+    }
+
 </style>
 </head>
 <body>
     <center> <h1>Login</h1> </center>
     {% if message %}
-        <div style="color:red">{{ message }}</div>
+        <div style="color:red" >{{ message }}</div>
     {% endif %}
 
     <form action="{% url 'login' %}" method="post">
@@ -53,15 +60,6 @@
             <input type="password" name="password" placeholder="Enter Password">
             <button type="submit">Login</button> 
 
-<!--{% if message %}
-    <div style="color:red">{{ message }}</div>
-{% endif %}
-
-<form action="{% url 'login' %}" method="post">
-    {% csrf_token %}
-    <input type="text" name="username" placeholder="Username">
-    <input type="password" name="password" placeholder="Password">
-    <input type="submit" value="Login"> -->
         </div>
     </form>
 </body>
