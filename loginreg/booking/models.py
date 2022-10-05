@@ -20,10 +20,9 @@ class Subject(models.Model):
     
     def is_seat_available(self):
         return self.seats.count() < self.capacity
-"""
+
     def is_seat_not_available(self):
-        return self.seats.count() > self.capacity
-"""
+        return self.seats.count() == self.capacity
 
 class Booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default="")

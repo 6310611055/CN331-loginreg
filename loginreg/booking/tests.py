@@ -17,10 +17,10 @@ class BookingTestCase(TestCase):
     def test_seat_available(self):
         cn320 = Subject.objects.first()
         self.assertTrue(cn320.is_seat_available())
-"""
+
     def test_seat_not_available(self):
-        CN361 = Subject.objects.first()
-        self.assertTrue(CN361.is_seat_not_available())
-"""
+        cn320 = Subject.objects.first()
+        self.assertFalse(cn320.is_seat_not_available())
+
 
 # Create your tests here.
