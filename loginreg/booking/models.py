@@ -1,3 +1,5 @@
+from email.policy import default
+from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -10,10 +12,11 @@ class Subject(models.Model):
     section = models.CharField(max_length=10, default="")
     semester = models.CharField(max_length=10, default="")
     year = models.CharField(max_length=10, default="")
-    seats = models.CharField(max_length=10, default="")
+    capacity = models.IntegerField(default=0)
+    seats = models.ManyToManyField(User , blank=True, related_name= "subjects")
      
     def __str__(self):
-        return f"{self.class_number} {self.subject_name} {self.section} {self.semester} {self.year} {self.seats}"
+        return f"{self.class_number} {self.subject_name} {self.section} {self.semester} {self.year} max:{self.capacity}"
 
 
 class Booking(models.Model):

@@ -29,7 +29,7 @@ def index(request):
 def bookings(request, subject_id):
     user = User.objects.get(pk=request.user.id)
     subject = Subject.objects.get(id=subject_id)
-
+    subject.seats.add(request.user)
     check = Booking.objects.filter(user=user, course_number=subject).first()
 
     if check is None:
@@ -38,7 +38,23 @@ def bookings(request, subject_id):
         subjects = Booking.objects.filter(user=user)
         return render(request,'booking/booking.html', {
             'subjects': subjects,
+            'booking' : booking,
         })
+
+def addseat(request):
+    user = User.objects.get(id=request.user.id)
+    subject = Subject.objects.get(pk = request.POST["action"])
+    book = Booking.objects.create(user=user, course_number=subject)
+    subject.seats.add(request.user)
+    return HttpResponseRedirect(reverse('subject'))
+
+def removeseat(request):
+    user = User.objects.get(id=request.user.id)
+    subject = Subject.objects.get(pk = request.POST["action"])
+    book = Booking.objects.create(user=user, course_number=subject)
+    book.delete()
+    subject.seats.remove(request.user)
+    return HttpResponseRedirect(reverse('subject'))
 
 def checksubreg(request):
     user = User.objects.get(pk=request.user.id)
@@ -51,7 +67,7 @@ def checksubreg(request):
 def withdraw(request, subject_id):
     user = User.objects.get(pk=request.user.id)
     subject = Subject.objects.get(id=subject_id)
-
+    subject.seats.remove(request.user)
     check = Booking.objects.filter(user=user, course_number=subject).first()
 
     if check is not None:
@@ -61,3 +77,4 @@ def withdraw(request, subject_id):
         subjects = Booking.objects.filter(user=user).all()
         print(subjects)
         return HttpResponseRedirect(reverse('booking:index')) 
+

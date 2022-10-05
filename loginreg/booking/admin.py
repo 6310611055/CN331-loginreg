@@ -8,7 +8,7 @@ class BookingAdmin(admin.ModelAdmin):
 
 
 class SubjectAdmin(admin.ModelAdmin):
-    list_display = ("class_number", "subject_name", "section", "semester", "year", "seats")
+    list_display = ("class_number", "subject_name", "section", "semester", "year", "capacity")
 
 
 admin.site.register(Booking, BookingAdmin)
