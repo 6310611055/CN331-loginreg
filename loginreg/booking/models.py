@@ -17,6 +17,9 @@ class Subject(models.Model):
      
     def __str__(self):
         return f"{self.class_number} {self.subject_name} {self.section} {self.semester} {self.year} max:{self.capacity}"
+    
+    def is_seat_available(self):
+        return self.seats.count() < self.capacity
 
 
 class Booking(models.Model):
