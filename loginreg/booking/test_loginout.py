@@ -3,7 +3,6 @@ from urllib import response, request
 from django.test import TestCase, Client
 from .models import Subject, Booking, Request
 from django.contrib.auth.models import User
-from doctest import REPORT_CDIFF
 
 class LogInOutTest(TestCase):
 
