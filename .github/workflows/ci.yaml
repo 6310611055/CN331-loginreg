@@ -9,7 +9,7 @@ jobs:
     - name: Run Django unit tests
       run: |
         pip install --user -r requirements.txt
-        python ./{loginreg}/manage.py makemigrations
-        python ./{loginreg}/manage.py migrate
-        coverage run --source='.' ./{loginreg}/manage.py test
+        python ./loginreg/manage.py makemigrations
+        python ./loginreg/manage.py migrate
+        coverage run --source='.' ./loginreg/manage.py test
         coverage report
