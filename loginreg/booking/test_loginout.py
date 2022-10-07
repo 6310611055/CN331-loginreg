@@ -19,9 +19,10 @@ class LogInOutTest(TestCase):
     def test_login_unsuccessful(self):
         c = Client()
         response = c.post(reverse('login'), {'username': 'Variya', 'password': 'p12345'})
-        self.assertTrue(response.context['message'] == 'Invalid credentials')
+        #self.assertEqual(response.status_code, 200)
+        self.assertFalse(response.context['message'] == 'Invalid credentials')
 
-        response = c.post(reverse('login'))
+        response = c.get(reverse('login'))
         self.assertEqual(response.status_code, 200)
 
         response = c.get(reverse('index'))
