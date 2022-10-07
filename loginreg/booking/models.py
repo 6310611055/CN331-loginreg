@@ -31,6 +31,12 @@ class Booking(models.Model):
     def __str__(self):
         return f"{self.user} {self.course_number}"
 
+class Request(models.Model):
+    username= models.ForeignKey(User, on_delete=models.PROTECT, db_constraint=False, related_name= 'User' )
+
+    def __self__(self):
+        return f"{self.username}"
+
 #class Student(models.Model):
     ##first = models.CharField(max_length=64)
     ##last = models.CharField(max_length=64)

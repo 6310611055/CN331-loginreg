@@ -13,7 +13,7 @@ class BookingTestCase(TestCase):
         Booking.objects.create(
             user=user1, course_number=courseNum2
         )
-    
+
     def test_seat_available(self):
         cn320 = Subject.objects.first()
         self.assertTrue(cn320.is_seat_available())
